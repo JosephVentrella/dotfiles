@@ -10,6 +10,9 @@ esac
 alias subl='"/mnt/c/Program Files (x86)/Sublime Text 3/subl.exe"'
 alias c=clear
 alias bork=ls
+alias g="git status"
+alias untar='tar -zxvf '
+alias t='tar -czvf '
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
