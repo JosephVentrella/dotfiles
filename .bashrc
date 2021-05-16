@@ -49,12 +49,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
     else
-	color_prompt=
+    color_prompt=
     fi
 fi
 
@@ -117,5 +117,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 #Smile if command succeeds otherwise frown. Colorfy my prompt(username, hostname, current directory)
-export PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]YAY!\[\e[0m\]; else echo \[\e[31m\]BOO!\[\e[0m\]; fi\`\\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]YAY!\[\e[0m\]; else echo \[\e[31m\]BOO!\[\e[0m\]; fi\`\\[\033[35m\]\t\[\033[m\]-\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[00;32m\]\$(parse_git_branch)\[\033[00m\]$ "
