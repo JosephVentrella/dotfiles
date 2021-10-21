@@ -13,6 +13,7 @@ alias bork=ls
 alias g="git status"
 alias untar='tar -zxvf '
 alias t='tar -czvf '
+alias ev='source env/bin/activate'
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
